@@ -39,11 +39,11 @@ public class AddressController {
                 .getWeatherData(addressDTO.getCity(), apiKeyConfig.getAppid())
                 .main.temp.intValue();
 
-        //String flagUrl = flagClient.getFlagData(addressDTO.getCountry()).get(0).flags.png;
-        String flagURL = restTemplate.getForObject("https://restcountries.com/v3.1/name/{countryName}", FlagApus[].class,addressDTO.getCountry())[0].flags.png;
+        String flagUrl = flagClient.getFlagData(addressDTO.getCountry()).get(0).flags.png;
+        //String flagURL = restTemplate.getForObject("https://restcountries.com/v3.1/name/{countryName}", FlagApus[].class,addressDTO.getCountry())[0].flags.png;
 
         addressDTO.setCurrentTemperature(currentTemp);
-        addressDTO.setFlag(flagURL);
+        addressDTO.setFlag(flagUrl);
 
         return ResponseEntity.ok(
                 ResponseWrapper.builder()
